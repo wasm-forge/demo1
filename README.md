@@ -61,7 +61,7 @@ You have to build the project inside the `demo1` folder for a `wasm32-wasi` targ
   cargo build --release --target wasm32-wasi
 ```
 
-If everything works out, you can now enter the new folder `target\wasm32-wasi\release`, it should contain the file: 'demo1_background.wasm'.
+If everything works out, you can now enter the new folder `target\wasm32-wasi\release`, it should contain the file: 'demo1_backend.wasm'.
 
 This file cannot be deployed directly because it has WASI dependencies in it. 
 (You can check that by converting the .wasm file to its textual representation with the `wasm2wat` command).
