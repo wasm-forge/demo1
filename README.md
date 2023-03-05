@@ -10,7 +10,7 @@ You can now either create this project from scratch or clone this repository and
 
 ## Creating the project from scratch
 
-* You need to create the project using `dfx new demo1`
+* You need to create the project using `dfx new --type rust demo1`
 * go to folder: `demo1/src/demo1_backend`
 * Add the ic_polyfill dependency: `cargo add --git https://github.com/wasm-forge/ic_polyfill`
 
