@@ -11,3 +11,4 @@ fn greet(name: String) -> String {
 fn init() {
     ic_polyfill::init();
 }
+
