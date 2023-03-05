@@ -218,6 +218,7 @@ dependencies = [
  "candid",
  "ic-cdk",
  "ic-cdk-macros",
+ "ic_polyfill",
 ]
 
 [[package]]
@@ -328,12 +329,11 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "ic-cdk"
-version = "0.6.10"
+version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c98b304a2657bad15bcb547625a018e13cf596676d834cfd93023395a6e2e03a"
+checksum = "774b653cecdd15b6ae0731cce9e655b9cb2489b88458fd80a5b48aace55dfc1d"
 dependencies = [
  "candid",
- "cfg-if",
  "ic-cdk-macros",
  "ic0",
  "serde",
@@ -359,6 +359,14 @@ name = "ic0"
 version = "0.18.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "978b91fc78de9d2eb0144db717839cde3b35470199ea51aca362cb6310e93dfd"
+
+[[package]]
+name = "ic_polyfill"
+version = "0.1.0"
+source = "git+https://github.com/wasm-forge/ic_polyfill#8578421618e862dad95dedd6feee7a3aa208df23"
+dependencies = [
+ "ic-cdk",
+]
 
 [[package]]
 name = "indexmap"
