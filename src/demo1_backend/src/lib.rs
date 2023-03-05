@@ -7,6 +7,7 @@ fn greet(name: String) -> String {
     format!("Hello, {}!", name)
 }
 
+#[ic_cdk_macros::init]
 fn init() {
     ic_polyfill::init();
 }
