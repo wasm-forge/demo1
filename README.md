@@ -11,10 +11,10 @@ You can now either create this project from scratch or clone this repository and
 ## Creating the project from scratch
 
 * You need to create the project using `dfx new --type rust --no-frontend demo1`
-* go to folder: `demo1/src/demo1_backend`
+* Go to folder: `demo1/src/demo1_backend`
 * Add the ic_polyfill dependency: `cargo add --git https://github.com/wasm-forge/ic_polyfill`
 
-* modify the `demo1/src/demo1_backend/src/lib.rs` file containing the `greet` method so that it outputs messages to the debug console and uses the 'println!' command:
+* Modify the `demo1/src/demo1_backend/src/lib.rs` file containing the `greet` method so that it outputs messages to the debug console and uses the 'println!' command:
 
 ```rust
 #[ic_cdk_macros::query]
