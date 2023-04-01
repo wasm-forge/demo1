@@ -52,7 +52,7 @@ Once you have the demo1 project in your folder, enter the folder and deploy the 
 You can now call the canister method from the command line:
 
 ```bash
-  dfx canister call demo1_backend greed test_hello
+  dfx canister call demo1_backend greet test_hello
 ```
 
 You should be able to see the IC debug message: `Hello from IC debugger: test_hello` but there is still no hello from WASI message.
