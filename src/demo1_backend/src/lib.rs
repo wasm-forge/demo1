@@ -1,4 +1,4 @@
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn greet(name: String) -> String {
     
     ic_cdk::api::print(format!("Hello from IC debugger: {}", name));
@@ -7,8 +7,9 @@ fn greet(name: String) -> String {
     format!("Hello, {}!", name)
 }
 
-#[ic_cdk_macros::init]
+#[ic_cdk::init]
 fn init() {
-    ic_polyfill::init();
+    ic_wasi_polyfill::init();
 }
+
 
