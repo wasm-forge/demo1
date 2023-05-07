@@ -17,7 +17,7 @@ You can now either create this project from scratch or clone this repository and
 * Modify the `demo1/src/demo1_backend/src/lib.rs` file containing the `greet` method so that it outputs messages to the debug console and uses the 'println!' command:
 
 ```rust
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn greet(name: String) -> String {
     
     ic_cdk::api::print(format!("Hello from IC debugger: {}", name));
@@ -26,7 +26,7 @@ fn greet(name: String) -> String {
     format!("Hello, {}!", name)
 }
 
-#[ic_cdk_macros::init]
+#[ic_cdk::init]
 fn init() {
     ic_wasi_polyfill::init(0);
 }
