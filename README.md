@@ -46,7 +46,7 @@ This window will show you the communication with your canister.
 Once you have the demo1 project in your folder, enter the folder and deploy the project using:
 
 ```bash
-  dfx deploy
+  dfx canister create --all
 ```
 
 You can now call the canister method from the command line:
