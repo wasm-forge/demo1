@@ -49,14 +49,6 @@ Once you have the demo1 project in your folder, enter the folder and deploy the 
   dfx canister create --all
 ```
 
-You can now call the canister method from the command line:
-
-```bash
-  dfx canister call demo1_backend greet test_hello
-```
-
-You should be able to see the IC debug message: `Hello from IC debugger: test_hello` but there is still no hello from WASI message.
-
 You have to build the project inside the `demo1` folder for a `wasm32-wasi` target (you might need to install the target using rustup), do this with the command:
 ```bash
   cargo build --release --target wasm32-wasi
