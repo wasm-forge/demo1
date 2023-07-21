@@ -441,8 +441,8 @@ checksum = "b4e026318236de13568edafd85534ad29910908bf08cdcf177d4403fd4a5f6c4"
 
 [[package]]
 name = "ic-wasi-polyfill"
-version = "0.3.9"
-source = "git+https://github.com/wasm-forge/ic-wasi-polyfill#5e986cb3b95a58fbbf9386582f5c48847f22dcca"
+version = "0.3.10"
+source = "git+https://github.com/wasm-forge/ic-wasi-polyfill#b017ac79ff5bf1a8748d0cec21e0c98c4c502d48"
 dependencies = [
  "function_name",
  "ic-cdk 0.8.1",
@@ -928,8 +928,8 @@ checksum = "a507befe795404456341dfab10cef66ead4c041f62b8b11bbb92bffe5d0953e0"
 
 [[package]]
 name = "stable-fs"
-version = "0.1.8"
-source = "git+https://github.com/wasm-forge/stable-fs?rev=77575a3f3b19a7decd5258f9d3ab44782bb597ae#77575a3f3b19a7decd5258f9d3ab44782bb597ae"
+version = "0.1.9"
+source = "git+https://github.com/wasm-forge/stable-fs?rev=98a42fa9a32e999d5c2eb7ea2852bb1c62cff402#98a42fa9a32e999d5c2eb7ea2852bb1c62cff402"
 dependencies = [
  "bitflags 2.3.2",
  "ciborium",
