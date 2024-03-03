@@ -11,8 +11,8 @@ You can now either create this project from scratch or clone this repository and
 ## Creating the project from scratch
 
 * You need to create the project using `dfx new --type rust --no-frontend demo1`
-* Go to folder: `demo1/src/demo1_backend`
-* Add the ic_polyfill dependency: `cargo add --git https://github.com/wasm-forge/ic-wasi-polyfill`
+* Go to the backend source folder folder: `cd src/demo1_backend`
+* Add the ic_polyfill dependency: `cargo add ic-wasi-polyfill`
 
 * Modify the `demo1/src/demo1_backend/src/lib.rs` file containing the `greet` method so that it outputs messages to the debug console and uses the 'println!' command:
 
