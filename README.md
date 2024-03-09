@@ -28,7 +28,7 @@ fn greet(name: String) -> String {
 
 #[ic_cdk::init]
 fn init() {
-    unsafe {ic_wasi_polyfill::init(&[0u8;32], &[]);}
+    ic_wasi_polyfill::init(&[0u8;32], &[]);
 }
 
 ```
