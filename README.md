@@ -12,11 +12,25 @@ You can now either create this project from scratch or clone this repository and
 
 * You need to create the project using `dfx new --type rust --no-frontend demo1`
 * Go to the backend source folder folder: `cd src/demo1_backend`
-* Add the ic_polyfill dependency: `cargo add ic-wasi-polyfill`
+* Add the stable memory dependency: `cargo add ic-stable-structures` -- this is to show how to work with the custom memory
+* Add the polyfill dependency: `cargo add ic-wasi-polyfill`
 
 * Modify the `demo1/src/demo1_backend/src/lib.rs` file containing the `greet` method so that it outputs messages to the debug console and uses the 'println!' command:
 
 ```rust
+use std::cell::RefCell;
+use ic_stable_structures::{memory_manager::{MemoryId, MemoryManager}, DefaultMemoryImpl};
+
+// WASI polyfill requires a virtual stable memory to store the file system.
+// You can replace `0` with any index up to `254`.
+const WASI_MEMORY_ID: MemoryId = MemoryId::new(0);
+
+thread_local! {
+    // The memory manager is used for simulating multiple memories.
+    static MEMORY_MANAGER: RefCell<MemoryManager<DefaultMemoryImpl>> =
+        RefCell::new(MemoryManager::init(DefaultMemoryImpl::default()));
+}
+
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     
@@ -28,8 +42,16 @@ fn greet(name: String) -> String {
 
 #[ic_cdk::init]
 fn init() {
-    ic_wasi_polyfill::init(&[0u8;32], &[]);
+    let wasi_memory = MEMORY_MANAGER.with(|m| m.borrow().get(WASI_MEMORY_ID));
+    ic_wasi_polyfill::init_with_memory(&[0u8; 32], &[], wasi_memory);
 }
+
+#[ic_cdk::post_upgrade]
+fn post_upgrade() {
+    let wasi_memory = MEMORY_MANAGER.with(|m| m.borrow().get(WASI_MEMORY_ID));
+    ic_wasi_polyfill::init_with_memory(&[0u8; 32], &[], wasi_memory);    
+}
+
 
 ```
 
