@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 candid = "0.10"
-ic-cdk = "0.12"
-ic-cdk-timers = "0.6" # Feel free to remove this dependency if you don't need timers
-ic-stable-structures = "0.6"
-ic-wasi-polyfill = "0.3.17"
+ic-cdk = "0.16"
+ic-cdk-timers = "0.10" # Feel free to remove this dependency if you don't need timers
+ic-stable-structures = "0.6.5"
+ic-wasi-polyfill = "0.6"

@@ -18,12 +18,11 @@ You can now either create this project from scratch or clone this repository and
 * Modify the `demo1/src/demo1_backend/src/lib.rs` file containing the `greet` method so that it outputs messages to the debug console and uses the 'println!' command:
 
 ```rust
+use ic_stable_structures::{
+    memory_manager::MemoryManager,
+    DefaultMemoryImpl,
+};
 use std::cell::RefCell;
-use ic_stable_structures::{memory_manager::{MemoryId, MemoryManager}, DefaultMemoryImpl};
-
-// WASI polyfill requires a virtual stable memory to store the file system.
-// You can replace `0` with any index up to `254`.
-const WASI_MEMORY_ID: MemoryId = MemoryId::new(0);
 
 thread_local! {
     // The memory manager is used for simulating multiple memories.
@@ -33,7 +32,6 @@ thread_local! {
 
 #[ic_cdk::query]
 fn greet(name: String) -> String {
-    
     ic_cdk::api::print(format!("Hello from IC debugger: {}", name));
     println!("Hello from WASI: {}", name);
 
@@ -42,14 +40,18 @@ fn greet(name: String) -> String {
 
 #[ic_cdk::init]
 fn init() {
-    let wasi_memory = MEMORY_MANAGER.with(|m| m.borrow().get(WASI_MEMORY_ID));
-    ic_wasi_polyfill::init_with_memory(&[0u8; 32], &[], wasi_memory);
+    MEMORY_MANAGER.with(|m| {
+        let m = m.borrow();
+        ic_wasi_polyfill::init_with_memory_manager(&[0u8; 32], &[], &m, 200..210);
+    });
 }
 
 #[ic_cdk::post_upgrade]
 fn post_upgrade() {
-    let wasi_memory = MEMORY_MANAGER.with(|m| m.borrow().get(WASI_MEMORY_ID));
-    ic_wasi_polyfill::init_with_memory(&[0u8; 32], &[], wasi_memory);    
+    MEMORY_MANAGER.with(|m| {
+        let m = m.borrow();
+        ic_wasi_polyfill::init_with_memory_manager(&[0u8; 32], &[], &m, 200..210);
+    });
 }
 
 
